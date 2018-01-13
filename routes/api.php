@@ -21,6 +21,6 @@ Route::post('login', 'Auth\LoginController@login');
 
 Route::get('list', 'ListController@index');
 Route::get('list/{id}', 'ListController@show');
-Route::post('list', 'ListController@store');
-Route::put('list/{id}', 'ListController@update');
-Route::delete('list/{id}', 'ListController@delete');
+Route::post('list/create', 'ListController@store');
+Route::post('list/{id}/edit', 'ListController@update');
+Route::post('list/{id}/delete', 'ListController@delete');

@@ -24,3 +24,9 @@ Route::get('list/{id}', 'ListController@show');
 Route::post('list/create', 'ListController@store');
 Route::post('list/{id}/edit', 'ListController@update');
 Route::post('list/{id}/delete', 'ListController@delete');
+
+Route::get('list', 'ItemController@index');
+Route::get('list/{listid}', 'ItemController@show');
+Route::post('list/{listid}/item', 'ItemController@store');
+Route::post('list/{listid}/item/{itemid}/edit', 'ItemController@update');
+Route::post('list/{listid}/item/{itemid}/delete', 'ItemController@delete');

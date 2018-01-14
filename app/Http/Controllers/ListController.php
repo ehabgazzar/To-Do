@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TodoItem;
 use App\TodoList;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ListController extends Controller
 
     public function show($id)
     {
-        return TodoList::find($id);
+        $items = TodoItem::where('list_id', $id)->get();
+        return $items;
     }
 
     public function store(Request $request)
@@ -32,10 +34,13 @@ class ListController extends Controller
 
     public function delete(Request $request, $id)
     {
-        $List = TodoList::findOrFail($id);
-        $List->delete();
+        $status = false;
+        $items = TodoItem::where('list_id', $id)->delete();
+        $list = TodoList::find($id);
+        if ($list)
+            $status = $list->delete();
 
-        return 204;
+        return $status . "";
     }
 
 }
